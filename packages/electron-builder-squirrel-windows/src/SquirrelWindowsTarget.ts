@@ -1,5 +1,5 @@
 import { InvalidConfigurationError, log } from "builder-util"
-import { getGrCustomSquirrelFromGithub } from "app-builder-lib/out/binDownload"
+import { getCustomSquirrelFromGithub } from "app-builder-lib/out/binDownload"
 import { Arch, getArchSuffix, SquirrelWindowsOptions, Target } from "app-builder-lib"
 import { WinPackager } from "app-builder-lib/out/winPackager"
 import * as path from "path"
@@ -107,7 +107,7 @@ export default class SquirrelWindowsTarget extends Target {
       extraMetadataSpecs: projectUrl == null ? null : `\n    <projectUrl>${projectUrl}</projectUrl>`,
       copyright: appInfo.copyright,
       packageCompressionLevel: parseInt((process.env.ELECTRON_BUILDER_COMPRESSION_LEVEL || packager.compression === "store" ? 0 : 9) as any, 10),
-      vendorPath: await getGrCustomSquirrelFromGithub(),
+      vendorPath: await getCustomSquirrelFromGithub(),
       ...this.options as any,
     }
 
