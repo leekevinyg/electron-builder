@@ -15,6 +15,10 @@ export function getBinFromGithub(name: string, version: string, checksum: string
   return getBin(dirName, `https://github.com/electron-userland/electron-builder-binaries/releases/download/${dirName}/${dirName}.7z`, checksum)
 }
 
+export function getGrCustomSquirrelFromGithub() {
+  return getBin("Squirrel.Windows", 'https://github.com/leekevinyg/electron-builder-custom-binaries/releases/download/1.0.0/Squirrel.Windows.7z');
+}
+
 export function getBin(name: string, url?: string | null, checksum?: string | null): Promise<string> {
   let promise = versionToPromise.get(name)
   // if rejected, we will try to download again
